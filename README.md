@@ -1,2 +1,1 @@
-# tgshop
-tgshop by nikitagl
+# Shop-Telegram-Bot

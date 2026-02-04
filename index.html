@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <!-- запрет зума (насколько возможно в WebView) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <title>Магазин одежды</title>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <!-- SPLASH -->
+  <div id="splash" class="splash">
+    <div class="splash__ring" aria-hidden="true">
+      <div class="sticker s1">👕</div>
+      <div class="sticker s2">👖</div>
+      <div class="sticker s3">🧥</div>
+      <div class="sticker s4">👟</div>
+      <div class="sticker s5">🧢</div>
+    </div>
+    <div class="splash__text">
+      <div id="hello" class="hello">Здравствуй, …</div>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="app" class="app">
+    <header class="topbar">
+      <button id="backBtn" class="iconbtn hidden" aria-label="Назад" title="Назад">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </button>
+      <div id="topTitle" class="topbar__title">Главная</div>
+      <div class="topbar__right"></div>
+    </header>
+
+    <main class="main">
+      <!-- HOME -->
+      <section id="screen-home" class="screen active">
+        <div class="searchbar">
+          <input id="searchInput" class="searchbar__input" placeholder="Поиск по названию или артикулу…" />
+        </div>
+        <div id="homeList" class="grid"></div>
+      </section>
+
+      <!-- CATEGORIES -->
+      <section id="screen-categories" class="screen">
+        <div id="catList" class="list"></div>
+      </section>
+
+      <!-- CATEGORY PRODUCTS -->
+      <section id="screen-category-products" class="screen">
+        <div class="subheader">
+          <!-- ВЕСЬ БЛОК кликабелен -->
+          <div id="catHeaderTap" class="subheader__left" role="button" tabindex="0" aria-label="Назад к категориям">
+            <div class="subheader__chip">🧺</div>
+            <div class="subheader__txt">
+              <div class="subheader__titleRow">
+                <div id="catTitle" class="subheader__title">Категория</div>
+                <div class="subheader__chev" aria-hidden="true">‹</div>
+              </div>
+              <div id="catCount" class="subheader__sub">0 товаров</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="catProducts" class="grid"></div>
+      </section>
+
+      <!-- PRODUCT -->
+      <section id="screen-product" class="screen">
+        <div id="productView" class="product"></div>
+      </section>
+
+      <!-- CART -->
+      <section id="screen-cart" class="screen">
+        <div id="cartList" class="cart"></div>
+        <div class="cartFooter">
+          <div class="cartFooter__sum">
+            <span>Итого:</span>
+            <strong id="cartTotal">0.00 BYN</strong>
+          </div>
+          <button id="checkoutBtn" class="btn btn--primary">Оформить</button>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="screen-faq" class="screen">
+        <div id="faqList" class="faq"></div>
+      </section>
+    </main>
+
+    <nav class="tabs" role="tablist" aria-label="Навигация">
+      <button class="tab active" data-tab="home" role="tab" aria-selected="true">
+        <span class="tab__icon">🏠</span>
+        <span class="tab__label">Главная</span>
+      </button>
+      <button class="tab" data-tab="categories" role="tab" aria-selected="false">
+        <span class="tab__icon">🧺</span>
+        <span class="tab__label">Категории</span>
+      </button>
+      <button class="tab" data-tab="cart" role="tab" aria-selected="false">
+        <span class="tab__icon">🛒</span>
+        <span class="tab__label">Корзина</span>
+        <span id="cartDot" class="tab__dot hidden"></span>
+      </button>
+      <button class="tab" data-tab="faq" role="tab" aria-selected="false">
+        <span class="tab__icon">❓</span>
+        <span class="tab__label">FAQ</span>
+      </button>
+    </nav>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
