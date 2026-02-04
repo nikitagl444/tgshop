@@ -5,7 +5,7 @@
 // ВСТАВЬ СЮДА URL БЭКЕНДА (без / в конце)
 // пример: https://weapon-moderate-donors-handheld.trycloudflare.com
 
-const DEFAULT_API_BASE = "https://weapon-moderate-donors-handheld.trycloudflare.com";
+const DEFAULT_API_BASE = "https://hints-riding-brother-animals.trycloudflare.com";
 
 // Можно переопределить через ?api=https://xxxx или localStorage
 function getApiBase() {
@@ -876,5 +876,6 @@ async function init() {
 }
 
 document.addEventListener("DOMContentLoaded", init);
+
 
 
