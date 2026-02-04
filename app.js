@@ -5,7 +5,7 @@
 // ВСТАВЬ СЮДА URL БЭКЕНДА (без / в конце)
 // пример: https://weapon-moderate-donors-handheld.trycloudflare.com
 
-const DEFAULT_API_BASE = "https://hints-riding-brother-animals.trycloudflare.com";
+const DEFAULT_API_BASE = "https://weapon-moderate-donors-handheld.trycloudflare.com";
 
 // Можно переопределить через ?api=https://xxxx или localStorage
 function getApiBase() {
@@ -702,16 +702,16 @@ async function checkout() {
   const customer = user ? { name: `${user.first_name || ""} ${user.last_name || ""}`.trim() } : null;
 
   try {
-    if (btn) { btn.disabled = true; btn.textContent = "Создаю заказ…"; }
+    if (btn) { btn.disabled = true; btn.textContent = "Готовлю оплату…"; }
 
-    const res = await apiPost("/create-order", {
+    const res = await apiPost("/checkout-link", {
       items,
       customer,
       telegram_init_data: tg?.initData || null
     });
 
-    const payUrl = res?.pay_url;
-    if (!payUrl) throw new Error("Backend не вернул pay_url");
+    const checkoutUrl = res?.checkout_url;
+    if (!checkoutUrl) throw new Error("Backend не вернул checkout_url");
 
     // чтобы не создавать 2 заказа — чистим корзину сразу после успеха
     saveCart({});
@@ -719,14 +719,14 @@ async function checkout() {
     renderHome(products);
 
     try {
-      tg?.openLink?.(payUrl);
+      tg?.openLink?.(checkoutUrl);
     } catch {
-      window.location.href = payUrl;
+      window.location.href = checkoutUrl;
     }
   } catch (e) {
     alert(`Ошибка оформления: ${e?.message || e}`);
   } finally {
-    if (btn) { btn.disabled = false; btn.textContent = "Оформить"; }
+    if (btn) { btn.disabled = false; btn.textContent = "Оплатить"; }
   }
 }
 
@@ -876,6 +876,5 @@ async function init() {
 }
 
 document.addEventListener("DOMContentLoaded", init);
-
 
 
