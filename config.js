@@ -1,5 +1,6 @@
 window.APP_CONFIG = {
-  BACKEND_URL: "https://weapon-moderate-donors-handheld.trycloudflare.com",
+  BACKEND_URL: "https://hints-riding-brother-animals.trycloudflare.com",
 };
+
 
 
